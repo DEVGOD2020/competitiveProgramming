@@ -1,1 +1,2 @@
-Vtuber DevGod codeforces solutions :p
+# About
+Vtuber DevGod competitive programming solutions :p
