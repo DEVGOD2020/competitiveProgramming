@@ -12,15 +12,11 @@ var numMagicSquaresInside = function (grid) {
 
         for (let I = 0; I < 3; I++) {
             for (let J = 0; J < 3; J++) {
-                if (grid[row + I][col + J] < 1 || grid[row + I][col + J] > 9) {
+                if ( grid[row + I][col + J] < 1 || grid[row + I][col + J] > 9 || nums.has(grid[row + I][col + J]) ) {
                     return false;
                 }
                 nums.add(grid[row + I][col + J]);
             }
-        }
-
-        if (nums.size != 9) {
-            return false;
         }
 
         let sums = new Set([
