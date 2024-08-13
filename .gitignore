@@ -1,5 +1,7 @@
 node_modules/
 
+Debug/
+
 *.log
 
 test/
