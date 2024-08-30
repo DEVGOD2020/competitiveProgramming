@@ -4,32 +4,31 @@
  */
 
 var findNumberOfLIS = function(nums) {
-    let length = Array(nums.length).fill(1);
-    let count = Array(nums.length).fill(1);
+    
+    let length = new Array(nums.length).fill(1);
+    let count = new Array(nums.length).fill(1);
 
-    for(let I=0; I<nums.length;I++){
-        for(let J=0; J<I;J++){
-            if(nums[J] < nums[I]){
-                if(length[J]+1 > length[I]){
-                    length[I] = length[J]+1;
-                    count[I] = 0;
+    for(let R = 0; R<nums.length; R++){
+        for(let L= 0; L<R; L++){
+            if(nums[R] > nums[L]){
+                if(length[R] < length[L]+1){
+                    length[R] = length[L]+1;
+                    count[R] = 0;
                 }
-                if(length[J]+1 == length[I]){
-                    length[I] = length[J]+1;
-                    count[I] += count[J];
+                if(length[R] == length[L]+1){
+                    count[R] += count[L];
                 }
             }
         }
     }
 
-    let maxCount = Math.max(length);
-    let result = 0;
-
-    for(let a in length){
-        if(length[a] == maxCount ){
-            result += count[a]
+    let maxLength = Math.max(...length);
+    let ans = 0;
+    for(let I = 0; I<nums.length; I++){
+        if(length[I] === maxLength){
+            ans += count[I];
         }
     }
 
-    return result;
+    return ans;
 };

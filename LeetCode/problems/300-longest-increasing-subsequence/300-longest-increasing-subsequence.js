@@ -2,24 +2,19 @@
  * @param {number[]} nums
  * @return {number}
  */
-
-
 var lengthOfLIS = function(nums) {
-    let dp = Array(nums.length).fill(1);
-    //let dp = [1];
-    for(let I = 0; I<nums.length; I++){
-        let highest = -Infinity;
-        for(let J = I-1; J>=0; J+=-1){
-            if(nums[J] < nums[I]){
-                if(dp[J] > highest){
-                    highest = dp[J]
+    let length = new Array(nums.length).fill(1);
+    let ans = 1;
+    for(let R = 0; R<nums.length; R++){
+        for(let L= 0; L<R; L++){
+            if(nums[R] > nums[L]){
+                if(length[R] < length[L]+1){
+                    length[R] = length[L]+1;
+                    ans = Math.max(ans,length[R]);
                 }
             }
         }
-        if(highest != -Infinity){
-            dp[I] += highest;
-        }
     }
 
-    return Math.max(...dp);
+    return ans;
 };
