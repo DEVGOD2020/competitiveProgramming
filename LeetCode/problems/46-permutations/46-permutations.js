@@ -3,25 +3,20 @@
  * @return {number[][]}
  */
 var permute = function(nums) {
-    const result = [];
-
-    if(nums.length === 1){
-        return [[...nums]];
-    }
-
-    for(let i = 0; i < nums.length; i++) {
-        console.log(nums);
-        const n = nums.shift();
-        const perms = permute(nums);
-
-        for(let perm of perms){
-            perm.push(n);
-            result.push(perm);
+    let ans = [];
+    let helper = function(n=0, perm=[]){
+        if(n == nums.length){
+            ans.push([...perm]);
+            return;
         }
-        console.log(result);
-        nums.push(n);
+        for(let I = 0; I<nums.length; I++){
+            if(!perm.includes(nums[I])){
+                perm.push(nums[I]);
+                helper(n+1,perm);
+                perm.pop();
+            }
+        }
     }
-
-    return result;
-
+    helper();
+    return ans;
 };
