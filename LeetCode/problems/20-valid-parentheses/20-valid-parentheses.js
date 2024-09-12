@@ -3,20 +3,16 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    let arr = s.split("");
     let stack = [];
-
-    while(arr.length > 0){
-        stack.push(arr.shift());
-        let ID = stack.length-1;
-        while(stack[ID-1] == "(" && stack[ID] == ")"){
-            stack.pop(); stack.pop();
+    let oppsite = {"(":")","[":"]","{":"}"}
+    for(let chr of s){
+        if("({[".includes(chr)){
+            stack.push(oppsite[chr]);
         }
-        while(stack[ID-1] == "[" && stack[ID] == "]"){
-            stack.pop(); stack.pop();
-        }
-        while(stack[ID-1] == "{" && stack[ID] == "}"){
-            stack.pop(); stack.pop();
+        if(")}]".includes(chr)){
+            if(stack.pop() !== chr){
+                return false;
+            }
         }
     }
 

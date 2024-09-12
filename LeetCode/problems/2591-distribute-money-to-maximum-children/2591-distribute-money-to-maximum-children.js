@@ -5,32 +5,22 @@
  */
 
 var distMoney = function(money, children) {
-    if(money < children){
-        return -1;
-    }
-    //24
-    //8,8,8
+    money += -children;
+    if(money < 0){ return -1;}
 
-    //Inf
-    //8,8,Inf-8
-    if(money <= 8){
-        return 0;
+    //Best case, every child can get 8 dollars, no remainder
+    if( Math.floor(money/7) === children && (money % 7) == 0){
+        return children;
     }
 
-    if(money > children*8){ return children-1; } 
-    if(money == children*8){ return children; }
-
-    if(money < children*8){
-        let rem = money%8;
-        let child = Math.floor(money/8);
-        
-        console.log(rem,child,money,children)
-
-        let ans = child-(children-child);
-        console.log(ans);
-        if(ans < 0){ans = 0;}
-        return ans;
+    //Case where one child has remainder of 4 money, but everyone else has 8
+    //One kid gives money way, then the other kid takes it, so its total children - 2
+    //The remainder $4 child, and the child that gets the reminder childs extra money
+    //8,8,4  //8,9,3
+    if( Math.floor(money/7) === children-1 && (money % 7) == 3){
+        return children-2;
     }
 
-    return -1;
+    //Otherwise, its either going to be childern - 1 or how many children can get 8 dollars
+    return Math.min(children-1, Math.floor(money/7) );
 };
