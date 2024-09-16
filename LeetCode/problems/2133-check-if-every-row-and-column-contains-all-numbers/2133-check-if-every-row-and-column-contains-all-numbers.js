@@ -3,20 +3,16 @@
  * @return {boolean}
  */
 var checkValid = function(matrix) {
-    let rows = {};
-    let cols = {};
-
-    for(a in matrix){
-        
-        //Add cols here
-
-        if(rows[a] == undefined){
-            rows[a] = matrix[a];
+    const size = matrix.length;
+    for(let row = 0; row<size; row++){
+        let rowSet = new Set(matrix[row]);
+        let colSet = new Set();
+        for(let col = 0; col<size ; col++){
+            colSet.add(matrix[col][row]);
+        }
+        if(rowSet.size < size  || colSet.size < size){
+            return false;
         }
     }
-
-    console.log(rows);
-    console.log(cols);
-
     return true;
 };
