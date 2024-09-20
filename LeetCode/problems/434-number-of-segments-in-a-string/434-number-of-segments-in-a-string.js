@@ -3,6 +3,6 @@
  * @return {number}
  */
 var countSegments = function(s) {
-    if(s.length == 0){return 0;}
-    return s.trim().split(" ").length;
+    if(s.trim() == ""){ return 0; }
+    return s.trim().split(/\s+/g).length;
 };
