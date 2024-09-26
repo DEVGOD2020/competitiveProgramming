@@ -3,21 +3,20 @@
  * @return {number}
  */
 var jump = function(nums) {
-    
+    let jumps = 0;
+    let currMax = 0;
+    let newMax = 0;
 
-    let helper = function(I, score=0){
-        if(I==nums.length-1){
-            return score;
+    for(let I = 0; I<nums.length-1; I++){
+        //New furtherst point
+        newMax = Math.max(newMax, I + nums[I]);
+
+        //Previous best point hit, so actually jump it
+        if(I == currMax){
+            jumps++;
+            currMax = newMax;
         }
-
-        let min = Number.MAX_SAFE_INTEGER;
-        for(let A = I+1; A<=I+nums[I]; A++){
-            let val = helper(A, score+1);
-            min = Math.min(min, helper(A, score+1));
-        }
-
-        return min;
     }
 
-    return helper(0);
+    return jumps;
 };

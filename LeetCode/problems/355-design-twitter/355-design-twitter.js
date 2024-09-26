@@ -21,8 +21,7 @@ Twitter.prototype.getNewsFeed = function(userId) {
    let newsFeed = [];
 
    for(let tweet of this.tweets){
-       if(tweet[0] == userId || 
-       ( userId in this.followers && this.followers[userId].has(tweet[0]) ) ){
+       if(tweet[0] == userId || (this.followers[userId]?.has(tweet[0]) )){
             newsFeed.push(tweet[1]);
             if (newsFeed.length == 10){break;}
        }
