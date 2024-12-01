@@ -5,3 +5,6 @@ Debug/
 *.log
 
 test/
+
+notes.tldr
+testcase.txt
