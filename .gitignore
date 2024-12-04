@@ -6,5 +6,5 @@ Debug/
 
 test/
 
-notes.tldr
-testcase.txt
+*.tldr
+*.txt
