@@ -3,21 +3,16 @@
  * @return {number}
  */
 var minimumLength = function(s) {
-    let myMap = new Map();
-    for(let a of s){
-        if(!myMap.has(a)){
-            myMap.set(a, 0);
-        }
-        myMap.set(a, myMap.get(a)+1);
-    }
+    let count = _.countBy(s);
 
-    let removed = 0;
-    for(let [key,val] of myMap){
-        while(val >= 3){
-            removed += 2;
-            val += -2;
+    let score = 0;
+    for(let key of _.keys(count)){
+        if(count[key] >= 3){
+            score += count[key]%2 ? 1 : 2;
+        }else{
+            score += count[key];
         }
     }
 
-    return s.length-removed;
+    return score;
 };
