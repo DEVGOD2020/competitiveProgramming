@@ -12,19 +12,12 @@
  * @return {TreeNode}
  */
 var mergeTrees = function(root1, root2) {
-    let stack = [root1]
-    let stack2 = [root2];
+    if(!root1 && !root2){ return null; }
 
-    let root3 = new TreeNode(null);
+    let newNode = new TreeNode( (root1?.val|0) + (root2?.val|0) );
 
-    while(stack.length > 0 && stack2.length > 0){
-        root1 = stack.pop();
-        root2 = stack2.pop();
-        if(root1.left){stack.push(root1.left);}
-        if(root2.left){stac2.push(root2.left);}
-        if(root1.right){stack.push(root1.right);}
-        if(root2.right){stac2.push(root2.right);}
+    newNode.left = mergeTrees(root1?.left, root2?.left);
+    newNode.right = mergeTrees(root1?.right, root2?.right);
 
-        root3.val = root1.val+root2.val;
-    }
+    return newNode;
 };
