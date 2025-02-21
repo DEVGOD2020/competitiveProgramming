@@ -1,8 +1,7 @@
 ---
 title: 'Leetcode 1963: Minimum Number of Swaps to Make the String Balanced'
 description: 'Leetcode 1963 Solution'
-pubDate: 'October 7 2024'
-heroImage: ''
+date: 2024-10-07
 ---
 
 ## About

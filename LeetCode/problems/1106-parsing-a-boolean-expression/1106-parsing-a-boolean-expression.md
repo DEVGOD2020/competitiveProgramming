@@ -1,8 +1,7 @@
 ---
 title: 'Leetcode 1106: Parsing A Boolean Expression'
 description: 'Leetcode 1106 Solution'
-pubDate: 'October 19 2024'
-heroImage: ''
+date: 2024-10-19
 ---
 
 ## About

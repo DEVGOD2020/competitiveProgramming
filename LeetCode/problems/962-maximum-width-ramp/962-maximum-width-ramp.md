@@ -1,8 +1,14 @@
 ---
 title: 'Leetcode 962: Maximum Width Ramp'
 description: 'Leetcode 962 Solution'
-pubDate: 'October 9 2024'
-heroImage: ''
+date: 2024-10-18
+authors:
+  name: DevGod
+  title: Vtuber
+  picture: "https://assets.leetcode.com/users/DevGod2020/avatar_1710603076.png"
+  url: "https://vtuber-devgod.com/coding"
+tags:
+  - Array
 ---
 
 ## About

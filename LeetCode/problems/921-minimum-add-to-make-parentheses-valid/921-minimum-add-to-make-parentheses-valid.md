@@ -1,8 +1,7 @@
 ---
 title: 'Leetcode 921: Minimum Add To Make Parentheses Valid'
 description: 'Leetcode 921 Solution'
-pubDate: 'October 8 2024'
-heroImage: ''
+date: 2024-10-08
 ---
 
 ## About

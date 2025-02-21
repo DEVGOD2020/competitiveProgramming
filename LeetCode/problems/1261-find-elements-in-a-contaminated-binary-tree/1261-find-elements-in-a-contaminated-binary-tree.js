@@ -10,24 +10,7 @@
  * @param {TreeNode} root
  */
 var FindElements = function(root) {
-    mySet = new Set();
-    mySet.add(0);
-    
-    root.val = 0;
-    let stack = [root];
-    while(stack.length > 0){
-        let node = stack.pop();
-        if( node.left !== null){
-            node.left.val = 2* node.val+1;
-            mySet.add(node.left.val);
-            stack.push( node.left);
-        }
-        if( node.right !== null){
-            node.right.val = 2* node.val+2;
-            mySet.add(node.right.val);
-            stack.push( node.right);
-        }
-    }
+    this.tree = root;
 };
 
 /** 
@@ -35,7 +18,15 @@ var FindElements = function(root) {
  * @return {boolean}
  */
 FindElements.prototype.find = function(target) {
-    return mySet.has(target);
+    let targetPath = (target+1).toString(2).slice(1);
+    
+    let pointer = this.tree;
+    for(let path of targetPath){
+        if(pointer === null){return false;}
+
+        pointer = path==="0" ? pointer.left : pointer.right;
+    }
+    return pointer !== null;
 };
 
 /** 

@@ -1,8 +1,7 @@
 ---
 title: 'Leetcode 2275: Largest Combination With Bitwise AND Greater Than Zero'
 description: 'Leetcode 2275 Solution'
-pubDate: 'November 6 2024'
-heroImage: ''
+date: 2024-11-06
 ---
 
 ## About

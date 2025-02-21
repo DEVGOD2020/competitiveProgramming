@@ -1,8 +1,7 @@
 ---
 title: 'Leetcode 2516: Take K of Each Character From Left and Right'
 description: 'Leetcode 2516 Solution'
-pubDate: 'November 19 2024'
-heroImage: ''
+date: 2024-11-19
 ---
 
 ## About
