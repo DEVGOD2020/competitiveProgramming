@@ -6,6 +6,7 @@ starlight/
 *.log
 
 test/
+API/
 
 *.tldr
 *.txt
