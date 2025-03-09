@@ -8,5 +8,10 @@ starlight/
 test/
 API/
 
+.nx
+
 *.tldr
 *.txt
+.nx/installation
+.nx/cache
+.nx/workspace-data
