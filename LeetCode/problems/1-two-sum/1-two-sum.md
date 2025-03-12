@@ -1,5 +1,5 @@
 ---
-title: 'Leetcode 1: Two Sum'
+title: 'Two Sum'
 description: 'Leetcode 1 Solution'
 date: 2025-03-07
 authors:
@@ -10,3 +10,5 @@ authors:
 tags:
   - Array
 ---
+
+Apple Pie Apple Pie Apple Pie
