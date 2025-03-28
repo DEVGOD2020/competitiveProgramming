@@ -5,11 +5,20 @@
  * @param {number} color
  * @return {number[][]}
  */
-var floodFill = function(image, sr, sc, color) {
-    let stack = [];
-    let visited = {};
+var floodFill = function(image, sr, sc, newColor) {
+    const ogColor = image[sr][sc];
+    let dfs = function(row,col){
+        let currColor = image[row][col];
+        if(currColor === ogColor && currColor !== newColor){
+            image[row][col] = newColor;
 
-    while()
+            if(row > 0){ dfs(row-1,col); }
+            if(col > 0){ dfs(row,col-1); }
+            if(row < image.length-1){ dfs(row+1,col); }
+            if(col < image[0].length-1){ dfs(row,col+1); }
+        }
 
-    return [[1,2,3],[4,5,6],[7,8,9]];
+        return image;
+    }
+    return dfs(sr,sc);
 };
