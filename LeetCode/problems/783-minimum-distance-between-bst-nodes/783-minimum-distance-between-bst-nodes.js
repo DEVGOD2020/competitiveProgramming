@@ -10,7 +10,7 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var getMinimumDifference = function(root) {
+var minDiffInBST = function(root) {
     let score = Infinity;
     let prev = null;
     let dfs = function(node){
