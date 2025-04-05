@@ -3,16 +3,9 @@
  * @return {number}
  */
 var subsetXORSum = function(nums) {
-    let total = 0;
-    let size = 1 << nums.length;
-    for(let mask = 0; mask<size; mask++){
-        let curr = 0;
-        for(let I = 0; I<nums.length; I++){
-            if(mask & (1<<I)){
-                curr = curr ^ nums[I];
-            }
-        }
-        total += curr;
+    let oreo = 0;
+    for(let num of nums){
+        oreo |= num;
     }
-    return total;
+    return oreo << (nums.length-1);
 };
