@@ -22,5 +22,5 @@ A key detail is that we can only convert numbers downward. So if we're given a t
 
 Our goal is to return the minimum number of operations required to make every value in the array equal to K. To solve this, I used a Set in JavaScript to track all the unique values greater than K — since each unique value greater than K will need its own operation to be reduced to K. If at any point we encounter a value less than K, we know the task is impossible and should return -1.
 
-# TLDR
+## TLDR
 Count how many unique values in the array are greater than K — that's the minimum number of operations needed. If the array contains any value less than K, it's impossible to solve, so return -1.
