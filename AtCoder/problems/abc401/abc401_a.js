@@ -1,0 +1,9 @@
+process.stdin.on('data', (data) => {
+    let A = Number(data.toString().trim());
+
+    if( A >= 200 && A<=299 ){
+        console.log("Success");
+    }else{
+        console.log("Failure");
+    }
+});
