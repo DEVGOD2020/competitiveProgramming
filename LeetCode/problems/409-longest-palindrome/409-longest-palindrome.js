@@ -22,16 +22,3 @@ var longestPalindrome = function(s) {
     
     return s.length-(oddCount-1);
 };
-
-//abccccdd
-
-//ccdadcc
-
-//b
-
-//abbcccdddd
-//ddcbabcdd
-
-//c
-
-//bbaaaa
