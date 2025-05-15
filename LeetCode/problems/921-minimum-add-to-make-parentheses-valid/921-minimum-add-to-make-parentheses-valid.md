@@ -1,7 +1,11 @@
 ---
-title: 'Leetcode 921: Minimum Add To Make Parentheses Valid'
-description: 'Leetcode 921 Solution'
+title: "Leetcode 921: Minimum Add To Make Parentheses Valid"
+description: Leetcode 921 Solution
 date: 2024-10-08
+tags:
+  - String
+  - Stack
+  - Greedy
 ---
 
 ## About

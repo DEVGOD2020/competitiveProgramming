@@ -1,13 +1,9 @@
 ---
 title: The k-th Lexicographical String of All Happy Strings of Length n
 date: 2025-02-18
-authors:
-  name: DevGod
-  title: Vtuber
-  picture: "https://assets.leetcode.com/users/DevGod2020/avatar_1710603076.png"
-  url: "https://vtuber-devgod.com/coding"
 tags:
   - Backtracking
+  - String
 ---
 
 Another backtracking problem where you are given some letter options to choice from to arrange permutations to explore. This one is a bit different cause you are tasked with finding all permutations containing just 'a', 'b' or 'c' letters, with no duplicates. For example a happy permutation is "abc", and a non happy one would be 'aab'.

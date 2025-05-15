@@ -2,14 +2,9 @@
 title: 'Leetcode 763: Partition Labels'
 description: 'Leetcode 763 Solution'
 date: 2025-03-29
-authors:
-  name: DevGod
-  title: Vtuber
-  picture: "https://assets.leetcode.com/users/DevGod2020/avatar_1710603076.png"
-  url: "https://vtuber-devgod.com/"
 tags:
-  - Hash Table
-  - Two Pointers
+  - Hash_Table
+  - Two_Pointers
   - String
   - Greedy
 ---

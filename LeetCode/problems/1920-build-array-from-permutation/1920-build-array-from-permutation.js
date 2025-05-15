@@ -3,9 +3,5 @@
  * @return {number[]}
  */
 var buildArray = function(nums) {
-    ans = [];
-    for(let a in nums){
-        ans[a] = nums[nums[a]];
-    }
-    return ans;
+    return nums.map( (el)=>nums[el]);
 };

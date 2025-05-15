@@ -5,30 +5,26 @@
  * @return {number[][]}
  */
 var kSmallestPairs = function(nums1, nums2, k) {
+    let minPQ = new MinPriorityQueue( (el)=>el[0] );
+    minPQ.enqueue( [ nums1[0] + nums2[0], [0,0] ] );
+    let visit = new Set();
+
     let ans = [];
+    while(k>0 && !minPQ.isEmpty()){
+        let [X,Y] = minPQ.dequeue()[1];
+        ans.push( [nums1[X], nums2[Y] ] );
 
-    const numbersQueue1 = new MinPriorityQueue();
-    const numbersQueue2 = new MinPriorityQueue();
-    for(a of nums1){
-        numbersQueue1.enqueue(a);
-    }
-    for(a of nums2){
-        numbersQueue2.enqueue(a);
-    }
-
-    let I = 0;
-    let val = 0;
-    while(I<k){
-        if(numbersQueue1.front()['element'] <= numbersQueue2.front()['element']){
-            ans.push( [ numbersQueue1.front()['element'], numbersQueue2.dequeue()['element'] ] );
-        }else{
-            ans.push( [ numbersQueue2.dequeue()['element'] , numbersQueue1.front()['element'] ] );
+        if(X+1 < nums1.length && !visit.has(`${X+1},${Y}`)){
+            minPQ.enqueue( [ nums1[X+1] + nums2[Y], [X+1,Y] ] );
+            visit.add(`${X+1},${Y}`);
         }
-
-        I++;
+        if(Y+1 < nums2.length && !visit.has(`${X},${Y+1}`)){
+            minPQ.enqueue( [ nums1[X] + nums2[Y+1], [X,Y+1] ] );
+            visit.add(`${X},${Y+1}`);
+        }
+        k--;
     }
 
-    console.log(ans);
 
-    return [[1,2],[3,4]];
+    return ans;
 };

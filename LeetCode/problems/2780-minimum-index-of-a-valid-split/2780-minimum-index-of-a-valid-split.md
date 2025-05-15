@@ -1,16 +1,16 @@
 ---
-title: 'Leetcode 2780: Minimum Index of a Valids Split'
-description: 'Leetcode 2780 Solution'
+title: "Leetcode 2780: Minimum Index of a Valids Split"
+description: Leetcode 2780 Solution
 date: 2025-03-26
 authors:
   name: DevGod
   title: Vtuber
-  picture: "https://assets.leetcode.com/users/DevGod2020/avatar_1710603076.png"
-  url: "https://vtuber-devgod.com/"
+  picture: https://assets.leetcode.com/users/DevGod2020/avatar_1710603076.png
+  url: https://vtuber-devgod.com/
 tags:
   - Array
-  - Hash Table
   - Sorting
+  - Hash_Table
 ---
 
 I started today's daily LeetCode problem by using LeetCode’s provided Lodash _.countBy function to quickly create a frequency map of all elements in the array. Since the dominant element is the one that appears more than half the time, it must have the highest frequency among all elements. The dominant element is the one with the highest frequency in the array, while my suffix sum will represent the total count of the dominant element within the given array. The problem also guarantees that the input will always contain a dominant element before any array splits occur.
