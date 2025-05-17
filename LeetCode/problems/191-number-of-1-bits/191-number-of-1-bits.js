@@ -4,10 +4,9 @@
  */
 var hammingWeight = function(n) {
     let sum = 0;
-    
-    for(let I = 0; I < 32; I++){
-        sum += (n>>I)&1;
+    while(n>0){
+        sum += n&1;
+        n = n>>>1;
     }
-    
     return sum;
 };
