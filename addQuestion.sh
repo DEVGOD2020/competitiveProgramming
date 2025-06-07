@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
-platforms=("leetcode" "codeforce")
-#read -e -p "Choose Platform: " platform
+platforms=("atcoder" "leetcode" "codeforce")
 
 select platform in "${platforms[@]}"; do
-	case "$platform" in
+	case "$platform" in	
+		atcoder)
+			read -e -p "Question: " question
+			mkdir -p AtCoder/problems/${question::-1}/
+			cp AtCoder/templates/basicTemplate.js AtCoder/problems/${question::-1}/$question.js
+			nvim AtCoder/problems/${question::-1}/$question.js
+			echo "Added Successfully"
+		;;
 		leetcode)
 			read -e -p "Question: " question
 			mkdir -p LeetCode/problems/$question/
