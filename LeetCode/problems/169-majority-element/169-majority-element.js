@@ -3,5 +3,19 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    return _.sortBy(nums)[ Math.floor( (nums.length)/2 ) ];
+    let score = 0;
+    let ans = nums[0];
+
+    for(let num of nums ){
+        if(score === 0){
+            ans = num;
+        }
+        if(num === ans){
+            score++;
+        }else{
+            score--;
+        }
+    }
+
+    return ans;
 };
