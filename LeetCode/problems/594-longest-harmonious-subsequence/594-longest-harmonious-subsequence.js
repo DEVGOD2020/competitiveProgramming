@@ -4,7 +4,6 @@
  */
 var findLHS = function(nums) {
     let count = _.countBy(nums);
-
     let max = 0;
     for(let num of nums){
         if(count[num+1]){
