@@ -3,14 +3,14 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let maxCur = 0;
-    let maxSoFar = 0;
+    let curProfit = 0;
+    let maxProfit = 0;
 
     for(let I = 1; I<prices.length; I++){
-        maxCur += prices[I]-prices[I-1];
-        maxCur = Math.max(0, maxCur);
-        maxSoFar = Math.max(maxCur, maxSoFar);
+        curProfit += prices[I]-prices[I-1];
+        curProfit = Math.max(0, curProfit);
+        maxProfit = Math.max(curProfit, maxProfit);
     }
 
-    return maxSoFar;
+    return maxProfit;
 };
