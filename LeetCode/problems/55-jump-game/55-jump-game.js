@@ -2,7 +2,6 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-
 var canJump = function(nums) {
     let maxJump = 0;
     for(let I = 0; I<nums.length; I++){
