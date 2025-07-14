@@ -10,24 +10,10 @@
  * @return {number}
  */
 var getDecimalValue = function(head) {
-    let iterator = 1;
-    let value = 0;
-
-    let current = head;
-    let prev = null;
-    let next2 = current.next;
-    while(current != null){
-        next2 = current.next;
-        current.next = prev;
-        prev = current;
-        current = next2;
+    let ans = 0;
+    while(head){
+        ans = (ans<<1)|head.val;
+        head = head.next;
     }
-
-    while(prev != null){
-        if(prev.val == 1){value += iterator;}
-        iterator+=iterator;
-        prev = prev.next;
-    }
-
-    return value;
+    return ans;
 };
