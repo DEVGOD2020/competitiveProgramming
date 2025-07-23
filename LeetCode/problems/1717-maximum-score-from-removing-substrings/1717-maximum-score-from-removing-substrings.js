@@ -5,49 +5,25 @@
  * @return {number}
  */
 var maximumGain = function(s, x, y) {
-    let stack = [];
+    let a = 0;
+    let b = 0;
     let score = 0;
-    if(x<y){
-        for(let chr of s){
-            stack.push(chr);
-            while(stack[stack.length-2] === 'b' && stack[stack.length-1] === 'a'){
-                stack.pop();
-                stack.pop();
-                score += y;
-            }
+    let max = Math.max(x,y);
+    let min = Math.min(x,y);
+    let checkLast = x<y ? "a" : "b";
+    for(let chr of s){
+        a += (chr=='a');
+        b += (chr=='b');
+        if(/[^ab]/.test(chr) ){
+            score += Math.min(a,b)*min;
+            a=0; b=0;
         }
-
-        let newStack = [];
-        for(let el of stack){
-            newStack.push(el);
-            while(newStack[newStack.length-2] === 'a' && newStack[newStack.length-1] === 'b'){
-                newStack.pop();
-                newStack.pop();
-                score += x;
-            }
+        if( a>0 && b>0 && chr==checkLast){
+            score+=max;
+            a--; b--;
         }
     }
 
-    if(x>y){
-        for(let chr of s){
-            stack.push(chr);
-            while(stack[stack.length-2] === 'a' && stack[stack.length-1] === 'b'){
-                stack.pop();
-                stack.pop();
-                score += x;
-            }
-        }
-
-        let newStack = [];
-        for(let el of stack){
-            newStack.push(el);
-            while(newStack[newStack.length-2] === 'b' && newStack[newStack.length-1] === 'a'){
-                newStack.pop();
-                newStack.pop();
-                score += y;
-            }
-        }
-    }
-
+    score += Math.min(a,b)*min;
     return score;
 };
