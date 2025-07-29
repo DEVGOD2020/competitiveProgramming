@@ -1,8 +1,11 @@
 ---
 title: 'Leetcode 3011: Find if Array Can Be Sorted'
 description: 'Leetcode 3011 Solution'
-pubDate: 'November 5 2024'
-heroImage: ''
+date: 2024-11-05
+tags:
+ - Array
+ - Bit_Manipulation
+ - Sorting
 ---
 
 ## About

@@ -1,8 +1,11 @@
 ---
 title: 'Leetcode 2696: Minimum String Length After Removing Substrings'
 description: 'Leetcode 2696 Solution'
-pubDate: 'October 6 2024'
-heroImage: ''
+date: 2024-10-06
+tags:
+ - String
+ - Stack
+ - Simulation
 ---
 
 ## About

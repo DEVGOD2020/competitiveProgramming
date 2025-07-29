@@ -1,11 +1,13 @@
 ---
-title: Product of the Last K Numbers
+title: "Leetcode 1352: Product of the Last K Numbers"
+description: Leetcode 1352 Solution
 date: 2025-02-13
-authors:
-  name: DevGod
-  title: Vtuber
-  picture: https://assets.leetcode.com/users/DevGod2020/avatar_1710603076.png
-  url: https://vtuber-devgod.com/coding
+tags:
+- Array
+- Math
+- Design
+- Data_Stream
+- Prefix_Sum
 ---
 
 Cool so looks like we get another System Design problem today. As usual, Leetcode just casually gives us the defualt JS prototyping functions together like a madlad template. This time we accepting numbers in a sort of data stream in one method. The other method being for taking the previous K values recieved, and returning the product of all of them multiplied together.

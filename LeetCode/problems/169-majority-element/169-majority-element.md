@@ -4,8 +4,8 @@ description: Leetcode 169 Solution
 date: 2025-06-15
 tags:
  - Array
- - Hash Table
- - Divide and Conquer
+ - Hash_Table
+ - Divide_Conquer
  - Sorting
  - Counting
 ---

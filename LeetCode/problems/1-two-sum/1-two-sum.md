@@ -3,8 +3,8 @@ title: "Leetcode 1: Two Sum"
 description: Leetcode 1 Solution
 date: 2025-05-03
 tags:
-  - Array
-  - Hash_Table
+ - Array
+ - Hash_Table
 ---
 ## About
 Two Sum is the first ever Leetcode problem published. In this problem, we are given an array of numbers, and a target integer. We must find two points in the given array who's values added together are equal to the given target value. At the end, we return the indexes of where these two points exist in the given array.
