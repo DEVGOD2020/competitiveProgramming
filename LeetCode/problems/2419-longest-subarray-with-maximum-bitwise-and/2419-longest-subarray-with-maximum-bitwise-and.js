@@ -3,19 +3,12 @@
  * @return {number}
  */
 var longestSubarray = function(nums) {
-    if(nums.length==1){return 1;}
-    let L = 0;
-    let R = 0;
-    let max = 0;
-    let maxValue = Math.max(...nums);
-    while(R<nums.length){
-        while(nums[L] === nums[R] && nums[L] === maxValue){
-            R++;
-        }
-        max = Math.max(max,R-L);
-        L = R;
-        L++;
-        R++;
+    let count = 0;
+    let ans = 0;
+    const max = Math.max(...nums);
+    for(let I = 0; I<nums.length; I++){
+        nums[I] === max ? count++ : count = 0;
+        ans = Math.max(ans,count);
     }
-    return max;
+    return ans;
 };
