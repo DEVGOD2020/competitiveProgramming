@@ -2,39 +2,17 @@
  * @param {number} numRows
  * @return {number[][]}
  */
-
-var memo = {
-    1: [1],
-    2: [1,1],
-    3: [1,2,1],
-    4: [1,3,3,1],
-    5: [1,4,6,4,1]
-}
 var generate = function(numRows) {
-    let arr = [];
-    let I = 1;
-    while(I<=numRows){
-        arr.push(row(I));
-        I++;
-    }
-    return arr;
-};
+    let dp = Array.from( {length:numRows}, ()=>[] );
+    dp[0] = [1];
 
-function row(X) {
-    if(memo[X] !== undefined){
-        return memo[X];
-    }
-    let arr = new Array(X).fill(0);
-
-    for(let a in arr){
-        if(a==0 || a==arr.length-1){
-            arr[a] = 1;
-        }else{
-            arr[a] = row(X-1)[a-1] + row(X-1)[a];
+    for(let I = 1; I<numRows; I++){
+        dp[I][0] = 1;
+        dp[I][I] = 1;
+        for(let A = 1; A<I; A++){
+            dp[I][A] = dp[I-1][A-1] + dp[I-1][A];
         }
     }
 
-    memo[X] = arr;
-    return memo[X];
+    return dp;
 };
-
