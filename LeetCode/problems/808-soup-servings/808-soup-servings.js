@@ -3,25 +3,27 @@
  * @return {number}
  */
 var soupServings = function(n) {
-    var probA = 0;
-    var probB = 0;
-    let soupA = function(a, b, c=0){
-        if(a <= 0 && b <= 0){probB++; return c;}
-        if(a <= 0){probA++; return c;}
+    //SHOUT OUT Shubham Raj for the discussion 4800 hint
+    if(n >= 4800){return 1;}
 
-        if(a > 0){
-            return soupA(a-100,b,c+1)
-            +soupA(a-75,b-25,c+1)
-            +soupA(a-50,b-50,c+1)
-            +soupA(a-25,b-75,c+1);
-        }else{
-           return soupA(a-75,b-25,c+1)
-            +soupA(a-50,b-50,c+1)
-            +soupA(a-25,b-75,c+1);
+    let memo = new Map();
+    let blah = function(A,B){
+        if(A <= 0 && B<=0){return 0.5;}
+        if(A <= 0){return 1;}
+        if(B <= 0){return 0;}
+
+        if(memo.get(`${A}_${B}`)){
+            return memo.get(`${A}_${B}`)
         }
+
+        memo.set( `${A}_${B}`,
+        blah(A-100,B)*0.25 + 
+        blah(A-75,B-25)*0.25 +
+        blah(A-50,B-50)*0.25 +
+        blah(A-25,B-75)*0.25 );
+
+        return memo.get(`${A}_${B}`);
     }
 
-    let val = soupA(n,n);
-    console.log(val,probA,probB);
-    return probA/probB;
+    return blah(n,n);
 };
