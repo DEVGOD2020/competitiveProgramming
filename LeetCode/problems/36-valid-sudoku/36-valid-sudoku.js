@@ -3,43 +3,27 @@
  * @return {boolean}
  */
 var isValidSudoku = function(board) {
-    let row = {};
-    let col = {};
-    let cell = {};
+    let rowMap = new Map();
+    let colMap = new Map();
+    let cellMap = new Map();
+    for(let row = 0; row<9; row++){
+        for(let col = 0; col<9; col++){
+            let val = board[row][col];
+            if(val == "."){continue;}
 
-    //Turn board matrix into some hash maps
-    for(let A in board){
-        for(let B in board[A]){
-            if(board[A][B] != "."){
-                if(row[A] === undefined){row[A] = [];}
-                if(col[B] === undefined){col[B] = [];}
-                if(cell[3*Math.floor(B/3)+Math.floor(A/3)] === undefined){cell[3*Math.floor(B/3)+Math.floor(A/3)] = [];}
-                row[A].push(board[A][B]);
-                col[B].push(board[A][B]);
-                cell[3*Math.floor(B/3)+Math.floor(A/3)].push(board[A][B]);
-            }
-        }
-    }
+            const cell = Math.floor(row/3)*10+Math.floor(col/3);
+            if( !rowMap.has(row) ){rowMap.set(row, new Set() );}
+            if( !colMap.has(col) ){colMap.set(col, new Set() );}
+            if( !cellMap.has(cell) ){cellMap.set(cell, new Set() );}
 
-    //Run checks
-    for(let Z of Object.values(row)){
-        const set = new Set(Z);
-        if(Z.length != set.size){
-            return false;
+            if(rowMap.get(row).has(val)){return false;}
+            if(colMap.get(col).has(val)){return false;}
+            if(cellMap.get(cell).has(val)){return false;}
+
+            rowMap.get(row).add(val);
+            colMap.get(col).add(val);
+            cellMap.get(cell).add(val);
         }
     }
-    for(let Z of Object.values(col)){
-        const set = new Set(Z);
-        if(Z.length != set.size){
-            return false;
-        }
-    }
-    for(let Z of Object.values(cell)){
-        const set = new Set(Z);
-        if(Z.length != set.size){
-            return false;
-        }
-    }
-    
     return true;
 };
