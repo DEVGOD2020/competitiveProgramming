@@ -2,19 +2,12 @@
  * @param {number[]} nums
  * @return {number}
  */
-var largestPerimeter = function (nums) {
-    nums = _.sortBy(nums);
-    let score = 0;
-
-    let L = 0;
-    let M = 1;
-    for (let R = 2; R < nums.length; R++) {
-        if (nums[R] < nums[M] + nums[L] && nums[L] + nums[M] + nums[R] > score) {
-            score = nums[L] + nums[M] + nums[R];
+var largestPerimeter = function(nums) {
+    nums.sort( (a,b)=>a-b);
+    for(let A = nums.length-3; A>=0; A--){
+        if(nums[A+2] < nums[A+1] + nums[A]){
+            return nums[A] + nums[A+1] + nums[A+2];
         }
-        L++;
-        M++;
     }
-
-    return score;
+    return 0;
 };
