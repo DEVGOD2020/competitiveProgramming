@@ -3,11 +3,9 @@
  * @return {number}
  */
 var smallestNumber = function(n) {
-    let ans = 0;
-    while(n>0){
-        ans = ans << 1;
-        ans++;
-        n = n >> 1;
+    let I = 1;
+    while(I <= n){
+        I = I<<1;
     }
-    return ans;
+    return I-1;
 };

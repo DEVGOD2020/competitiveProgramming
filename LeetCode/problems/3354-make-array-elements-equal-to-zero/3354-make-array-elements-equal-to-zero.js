@@ -3,25 +3,19 @@
  * @return {number}
  */
 var countValidSelections = function(nums) {
-    let prefixSums = [nums[0]];
+    let pre = [nums[0]];
     for(let I = 1; I<nums.length; I++){
-        prefixSums[I] = prefixSums[I-1]+nums[I];
+        pre[I] = pre[I-1]+nums[I];
     }
-
-    let score = 0;
+    const sum = pre[ nums.length-1 ];
+    
+    let ans = 0;
     for(let I = 0; I<nums.length; I++){
-        if(nums[I] > 0){continue;}
-        let target = prefixSums[nums.length-1]-prefixSums[I];
-        if(prefixSums[I] === target){
-            score += 2;
-        }
-        if(prefixSums[I] === target-1){
-            score += 1;
-        }
-        if(prefixSums[I] === target+1){
-            score += 1;
-        }
+        if(nums[I] > 0){ continue; }
+        const suf = (sum - pre[I]);
+        const diff = Math.abs( pre[I] - suf );
+        if( diff == 0){ ans += 2; }
+        if( diff == 1){ ans++; }
     }
-
-    return score;
+    return ans;
 };
