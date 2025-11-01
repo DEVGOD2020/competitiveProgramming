@@ -1,32 +1,28 @@
 /**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
  * @param {number[]} nums
  * @param {ListNode} head
  * @return {ListNode}
  */
 var modifiedList = function(nums, head) {
-    let mySet = new Set([...nums]);
-    while(mySet.has(head.val)){
-        head = head.next;
+    let mySet = new Set(nums);
+    let left = head;
+
+    while(mySet.has(left.val)){
+        left = left.next;
     }
 
-    let linkedList = new ListNode(head.val);
-    head = head.next;
-    let pointer = linkedList;
+    if(left == null){return head;}
+    else{ head = left;}
+    let right = left.next;
 
-    while(head){
-        if(!mySet.has(head.val)){
-            pointer.next = new ListNode(head.val);
-            pointer = pointer.next;
+    while(right){
+        if( !mySet.has(right.val)){
+            left.next = right;
+            left = right;
         }
-        head = head.next;
+        right = right.next;
     }
 
-    return linkedList;
+    left.next = right;
+    return head;
 };

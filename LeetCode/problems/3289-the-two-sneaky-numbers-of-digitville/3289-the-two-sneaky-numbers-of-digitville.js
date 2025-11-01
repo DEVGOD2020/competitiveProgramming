@@ -3,12 +3,13 @@
  * @return {number[]}
  */
 var getSneakyNumbers = function(nums) {
-    nums = _.sortBy(nums);
+    let mySet = new Set();
     let ans = [];
-    for(let I = 1; I<nums.length; I++){
-        if(nums[I-1] == nums[I]){
-            ans.push(nums[I-1]);
+    for(let num of nums){
+        if(mySet.has(num)){
+            ans.push(num);
         }
+        mySet.add(num);
     }
     return ans;
 };
