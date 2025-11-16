@@ -3,19 +3,8 @@
  * @return {number}
  */
 var numSub = function(s) {
-    let count = 0;
-    let ans = 0
-    for(let I = 0; I<s.length; I++){
-        if(s[I] === "1"){
-            count++;
-        }else{
-            ans += (count*(count+1))/2;
-            count = 0;
-        }
-    }
-    
-    ans += (count*(count+1))/2;
-    count = 0;
-    
-    return ans% (10**9 + 7);
+    const MOD = 10**9 + 7;
+    return s.split("0").reduce( 
+        (sum,el)=>sum = (sum+(el.length/2)*(el.length+1))%MOD, 0
+    )%MOD;
 };
