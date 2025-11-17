@@ -3,17 +3,12 @@
  * @return {number}
  */
 var pivotInteger = function(n) {
+    const AS = (x)=>(x/2)*(x+1);
     if(n==1){return 1;}
-    let sum = (n+1)*(n/2);
-    let temp = 0;
-
-    for(let I = 0; I<n; I++){
-        sum += -I;
-        if(sum == temp){
+    for(let I = 1; I<n; I++){
+        if( AS(I) == AS(n)-AS(I-1)){
             return I;
         }
-        temp += I;
     }
-
     return -1;
 };
