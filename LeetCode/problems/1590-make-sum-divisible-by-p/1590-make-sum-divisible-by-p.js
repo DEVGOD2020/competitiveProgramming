@@ -3,30 +3,23 @@
  * @param {number} p
  * @return {number}
  */
-
-var minSubarray = function(nums, p) {
+var minSubarray = function (nums, p) {
     let myMap = new Map();
-    myMap.set(0,-1);
-    let ans = 10**9;
+    myMap.set(0, -1);
 
-    let prefix = 0;
-    let remainder = _.sumBy(nums)%p;
+    const start = nums.reduce((el, sum) => el + sum) % p;
+    if (start == 0) { return 0; }
 
-    if(remainder == 0){return 0;}
-
-    let I = 0;
-    for(let num of nums){
-        prefix = (prefix+num)%p;
-
-        let target = (prefix - remainder + p) % p;
-
-        console.log(prefix,target);
-        if(myMap.has(target)){
-            ans = Math.min(ans, I - myMap.get(target));
+    let pre = 0;
+    let score = Infinity;
+    for (let I = 0; I < nums.length; I++) {
+        pre = (pre + nums[I]) % p;
+        let target = (pre - start + p) % p;
+        if (myMap.has(target)) {
+            score = Math.min(score, I - myMap.get(target));
         }
-        myMap.set(prefix, I);
-        I++;
+        myMap.set(pre, I);
     }
 
-    return ans >= nums.length ? -1 : ans;
+    return score >= nums.length ? -1 : score;
 };
