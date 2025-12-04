@@ -1,28 +1,16 @@
-import fs from "fs"
+const input = require('fs').readFileSync(0,'utf8').split("");
 
-fs.readFile('./day1.txt', (err, data) => {
-    if (err) throw err;
-    console.log( part1(data) );
-    console.log( part2(data) );
-});
+let part1 = input.reduce( (sum,el)=>sum + (el==="(" ? 1 : -1), 0);
 
-let part1 = function(data){
-    let score = 0;
-    for(let chr of data.toString()){
-        score += chr==="(" ? 1 : -1;
+let part2 = function(){
+  let sum = 0;
+  for(let I = 0; I<input.length; I++){
+    sum += (input[I]==="(" ? 1 : -1);
+    if(sum == -1){
+      return I+1;
     }
-    return score;
+  }
 }
 
-let part2 = function(data){
-    let score = 0;
-    let pos = 1;
-    for(let chr of data.toString()){
-        score += chr==="(" ? 1 : -1;
-        if(score === -1){
-            return pos;
-        }
-        pos++;
-    }
-    return -1;
-}
+console.log(part1);
+console.log(part2());
