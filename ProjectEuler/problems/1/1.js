@@ -1,7 +1,7 @@
 let mySet = new Set();
 
-for(let I = 0; I<1000; I++){
-    if(I%3 == 0 && I%5 == 0){
+for(let I = 1; I<1000; I++){
+    if(I%3 == 0 || I%5 == 0){
         mySet.add(I);
     }
 }
