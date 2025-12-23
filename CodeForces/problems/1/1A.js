@@ -1,33 +1,8 @@
-process.stdin.resume();
-process.stdin.setEncoding("utf-8");
+let input = require('fs').readFileSync(0,'utf8').split(" ");
 
-let inputString = "";
-let currentLine = 0;
+const n = Number(input[0]);
+const m = Number(input[1]);
+const a = Number(input[2]);
 
-process.stdin.on("data", (inputStdin) => {
-    inputString += inputStdin;
-});
+console.log( Math.ceil(n/a)*Math.ceil(m/a) );
 
-process.stdin.on("end", (_) => {
-    inputString = inputString
-        .trim()
-        .split("\n")
-        .map((string) => {
-            return string.trim();
-        });
-
-    main();
-});
-
-function readline() {
-    return inputString[currentLine++];
-}
-
-function main(){
-    const arr = readline().split(" ");
-    const n = parseInt(arr[0]);
-    const m = parseInt(arr[1]);
-    const a = parseInt(arr[2]);
-
-    console.log( Math.ceil(n/a)*Math.ceil(m/a) );
-}

@@ -3,18 +3,17 @@
  * @return {number}
  */
 var lengthOfLIS = function(nums) {
-    let length = new Array(nums.length).fill(1);
+    let LIS = new Array(nums.length).fill(1);
     let ans = 1;
-    for(let R = 0; R<nums.length; R++){
+    for(let R = 1; R<nums.length; R++){
         for(let L= 0; L<R; L++){
             if(nums[R] > nums[L]){
-                if(length[R] < length[L]+1){
-                    length[R] = length[L]+1;
-                    ans = Math.max(ans,length[R]);
+                if(LIS[R] < LIS[L]+1){
+                    LIS[R] = LIS[L]+1;
+                    ans = Math.max(ans,LIS[R]);
                 }
             }
         }
     }
-
     return ans;
 };
