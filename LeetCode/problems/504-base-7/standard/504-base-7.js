@@ -3,7 +3,6 @@
  * @return {string}
  */
 var convertToBase7 = function(num) {
-    /*
     if(num == 0){return "0";}
     let str = "";
     let temp = Math.abs(num);
@@ -14,6 +13,5 @@ var convertToBase7 = function(num) {
     }
 
     if(num < 0){str = "-"+str;}
-    return str;*/
-    return num.toString(7);
+    return str;
 };
