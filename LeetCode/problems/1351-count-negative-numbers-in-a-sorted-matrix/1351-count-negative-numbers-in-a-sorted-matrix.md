@@ -15,7 +15,7 @@ Given the small testcase constraints, we could use a bruteforce nested for loop 
 
 I iterate throughout each row of the matrix, preforming a binary search to find the index of the first negative number in the row. Depending on where this first negative number index is, I subtract the total row length with it to grab the total number of negative numbers present in the row. 
 
-Due rows and columns of the matrix are sorted in non increasing order, I do another preformance boost by not setting $$R$$ varible back to $$R=grid[0].length-1$$. After completing the binary search on the current row, we can say that due to its sorted nature, the next row is guarenteed to have either the same or smaller $$R$$ index.
+Due rows and columns of the matrix are sorted in non increasing order, I do another preformance boost by not setting $$R$$ varible back to $$R=grid[0].length-1$$. After completing the binary search on the current row, we can say that due to its sorted nature, the next row is guaranteed to have either the same or smaller $$R$$ index.
 
 Lastly I keep a score varible as a running total of my negative numbers in the matrix grid. Once I am done iterating and binary searching each row, I return the score varible to solve the problem.
 

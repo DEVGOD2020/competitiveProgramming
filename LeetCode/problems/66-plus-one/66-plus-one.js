@@ -5,12 +5,10 @@
 var plusOne = function(digits) {
     for(let I = digits.length-1; I>= 0; I--){
         digits[I]++;
-        if(digits[I] > 9){
-            digits[I] = 0;
-        }else{
+        if(digits[I] <= 9){
             return digits;
         }
+        digits[I] = 0;
     }
-    digits.unshift(1);
-    return digits;
+    return [1,...digits];
 };
