@@ -2,12 +2,12 @@
 title: "Leetcode 1970: Last Day Where You Can Still Cross"
 description: Leetcode 1970 Solution
 date: 2025-12-30
-difficulty: hard
+difficulty: Hard
 tags:
  - Array
  - Binary_Search
- - Depth_First_Search
- - Depth_First_Search
+ - Depth-First_Search
+ - Breadth-First_Search
  - Union_Find
  - Matrix
 ---

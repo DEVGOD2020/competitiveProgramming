@@ -2,6 +2,7 @@
 title: "Leetcode 1: Two Sum"
 description: Leetcode 1 Solution
 date: 2025-05-03
+difficulty: Easy
 tags:
  - Array
  - Hash_Table
