@@ -3,21 +3,20 @@
  * @return {number}
  */
 var maxMatrixSum = function(matrix) {
-    let score = 0;
-    let totalNeg = 0;
-    let absMin = 10e6;
-    for(let row of matrix){
-        let absRow = row.map( (el)=>Math.abs(el));
-        let numNegs = row.reduce( (sum,el)=>sum+(el<0?1:0),0);
-        score += Math.abs(_.sumBy(absRow));
-        absMin = Math.min(absMin, ...absRow);
-        totalNeg += numNegs;
+    let negatives = 0;
+    let sum = 0;
+    let min = 1e5 + 1;
+    for(let row = 0; row<matrix.length; row++){
+        for(let col=0; col<matrix.length; col++){
+            sum += Math.abs(matrix[row][col]);
+            if(min >= Math.abs(matrix[row][col])){
+                min = Math.abs(matrix[row][col])
+            }
+            if(matrix[row][col] < 0){
+                negatives++;
+            }
+        }
     }
 
-    if(totalNeg%2==1){
-        score -= 2*absMin;
-    }
-
-    return score;
-
+    return sum - ((negatives%2 == 1) ? 2*min : 0);
 };
