@@ -3,11 +3,11 @@
  * @return {number}
  */
 var minTimeToVisitAllPoints = function(points) {
-    let score = 0;
-    let curPoint = points[0];
-    for(let point of points){
-        score += Math.abs(point[0]-curPoint[0])+Math.abs(point[1]-curPoint[1]);
-        curPoint = point;
+    let ans = 0;
+    for(let I = 1; I<points.length; I++){
+        let A =  Math.abs( points[I][0] - points[I-1][0] );
+        let B = Math.abs( points[I][1] - points[I-1][1] );
+        ans += Math.max(A,B);
     }
-    return score;
+    return ans;
 };

@@ -6,13 +6,15 @@
  * @return {number[][]}
  */
 var allCellsDistOrder = function(rows, cols, rCenter, cCenter) {
-    let mat = new Array(rows).fill(0).map(() => new Array(cols).fill([0,0]));
-    console.log(mat);
-    for(let X = 0; X<rows; X++){
-        for(let Y = 0; Y<cols; Y++){
-            mat[X][Y] = Math.abs(X-rCenter)+Math.abs(Y-cCenter);
+    let arr = [];
+    for(let A = 0; A<rows; A++){
+        for(let B = 0; B<cols; B++){
+            let dist = Math.abs(A-rCenter) + Math.abs(B-cCenter);
+            if( arr[dist] == undefined){
+                arr[dist] = [];
+            }
+            arr[dist].push([A,B]);
         }
     }
-
-    return mat;
+    return [...arr].flat();
 };
