@@ -11,7 +11,6 @@
  * @return {boolean}
  */
 var isBalanced = function(root) {
-
     let helper = function(root){
         if(!root){ return 0;}
         let left = helper(root.left);
@@ -22,6 +21,5 @@ var isBalanced = function(root) {
         
         return Math.max(left, right) + 1;
     }
-
     return helper(root) != -1;
 };

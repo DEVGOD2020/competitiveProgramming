@@ -8,13 +8,13 @@
  */
 /**
  * @param {TreeNode} root
- * @return {TreeNode}
+ * @return {void} Do not return anything, modify root in-place instead.
  */
-
-var increasingBST = function(root, tail=null ) {
+var flatten = function(root, tail=null) {
     if(!root){return tail}
-    let left = increasingBST(root.left,root);
+    let right = flatten(root.right, tail);
+    let left = flatten(root.left, right);
     root.left = null;
-    root.right = increasingBST(root.right,tail);
-    return left;
+    root.right = left;
+    return root;
 };
