@@ -12,29 +12,25 @@
  */
 var balanceBST = function(root) {
     let arr = [];
-    
-    function inorder(root){
-        if(!root){
-            return 0;
-        }
-        let left = inorder(root.left);
+    let blah = function(root){
+        if(!root){return;}
+        blah(root.left);
         arr.push(root.val);
-        let right = inorder(root.right);
-        return left+right;
+        blah(root.right);
+        return;
+    }
+    blah(root);
+
+    let merge = function(L,R){
+        let M = Math.floor( (L+R)/2 );
+        if(L>=R){return null;}
+
+        let root = new TreeNode( arr[M] );
+        root.left = merge(L,M);
+        root.right = merge(M+1,R);
+
+        return root;
     }
 
-    inorder(root);
-    
-    function createBalBST(arr, L, R){
-        if(L>R){return null;}
-
-        let mid = L + Math.floor((R-L) / 2);
-
-        let leftNode = createBalBST(arr, L, mid-1);
-        let rightNode = createBalBST(arr, mid+1, R);
-
-        return new TreeNode(arr[mid],leftNode, rightNode);
-    }
-
-    return createBalBST(arr, 0, arr.length-1);
+    return merge(0,arr.length);
 };
