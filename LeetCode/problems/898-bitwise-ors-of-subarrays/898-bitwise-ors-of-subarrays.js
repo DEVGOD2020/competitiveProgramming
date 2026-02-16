@@ -5,17 +5,14 @@
 var subarrayBitwiseORs = function(arr) {
     let ans = new Set();
     let cur = new Set();
-    cur.add(0);
     for(let num of arr){
-        let temp = new Set();
+        let next = new Set([num]);
         for(let el of cur){
-            temp.add(el|num);
+            next.add(el|num);
+            ans.add(el|num);
         }
-        temp.add(num);
-        for(let el of temp){
-            ans.add(el);
-        }
-        cur = temp;
+        ans.add(num);
+        cur = next;
     }
     return ans.size;
 };
