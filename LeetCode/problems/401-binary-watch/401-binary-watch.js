@@ -3,27 +3,14 @@
  * @return {string[]}
  */
 var readBinaryWatch = function(turnedOn) {
-    let hammingWeight = function(n) {
-        let sum = 0;
-        for(let I = 0; I < 32; I++){
-            sum += (n>>I)&1;
-        }
-        return sum;
-    };
-
-    let ans = [];
-    for(let hour = 0; hour<12; hour++){
-        for(let minute = 0; minute<60; minute++){
-            let key = hammingWeight(hour)+hammingWeight(minute);
-            let str = hour+":"+minute;
-            if(minute < 10){
-                str = hour+":0"+minute;
-            }
-            if(key === turnedOn){
-                ans.push(str);
-            }
-        }
+    let arr = [];
+    for(let I = 0; I<1024; I++){
+        let minute = I&63;
+        let hour = I>>6;
+        if(hour > 11 || minute > 59){continue;}
+        let bitCount = I.toString(2).split("1").length-1;
+        if(bitCount !== turnedOn){continue;}
+        arr.push(hour + (minute < 10 ?":0":":") + minute);
     }
-
-    return ans;
+    return arr;
 };
