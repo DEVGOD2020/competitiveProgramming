@@ -3,21 +3,18 @@
  * @return {number}
  */
 var binaryGap = function(n) {
-    let max = 0;
-    let first = 0;
-    let last = 0;
-    let I = 1;
-    while(n > 0){
+    let score = 0;
+    let prev = -1;
+    let I = 0;
+    while(n>0){
         if(n&1 == 1){
-            last = first;
-            first = I;
-            if(last > 0){
-                max = Math.max(max, first-last);
+            if(prev != -1){
+                score = Math.max(score, I-prev);
             }
+            prev = I;
         }
-        n = n >> 1;
+        n = n>>1;
         I++;
     }
-
-    return max;
+    return score;
 };

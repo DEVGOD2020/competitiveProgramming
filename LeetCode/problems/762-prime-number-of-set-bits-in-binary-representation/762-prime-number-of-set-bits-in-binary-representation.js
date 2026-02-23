@@ -4,24 +4,13 @@
  * @return {number}
  */
 var countPrimeSetBits = function(left, right) {
-    let primeSet = new Set([2,3,5,7,11,13,17,19]);
-
-    let bitCountPrime = function(val){
-        let score = 0;
-        while(val > 0){
-            score += (val&1);
-            val >>= 1;
+    let primes = new Set([2,3,5,7,11,13,17,19]);
+    let bitCount = (I)=> I.toString(2).split("1").length-1;
+    let score = 0;
+    for(let I = left; I<=right; I++){
+        if(primes.has( bitCount(I) ) ){
+            score++;
         }
-        return primeSet.has(score);
     }
-
-    let ans = 0;
-    while(left<=right){
-        if(bitCountPrime(left)){
-            ans++;
-        }
-        left++;
-    }
-    
-    return ans;
+    return score;
 };
