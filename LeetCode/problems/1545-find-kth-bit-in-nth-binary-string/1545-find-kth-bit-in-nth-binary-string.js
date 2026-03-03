@@ -4,24 +4,9 @@
  * @return {character}
  */
 var findKthBit = function(n, k) {
-
-    let helper = function(row, col){
-        if(row == 1 && col == 1){
-            return 0;
-        }
-
-        const len = (1<<row) - 1;
-        const mid = Math.ceil( len/2 );
-
-        if(col == mid ){ return 1; }
-
-        if(col > mid ){
-            col = (len+1) - col;
-            return +!helper( row-1, col);
-        }
-
-        return helper( row-1, col);
-    }
-
-    return ""+helper(n,k);
+    const MID = (2**(n-1));
+    if(n <= 1){return "0";}
+    if(k == MID){return "1";}
+    if(k < MID){return findKthBit(n-1,k);}
+    return findKthBit(n-1,(2**n)-k)=="1"?"0":"1";
 };
