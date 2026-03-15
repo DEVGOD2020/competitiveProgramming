@@ -4,33 +4,23 @@
  * @return {string}
  */
 var getHappyString = function(n, k) {
-    let arr = new Array(n).fill('');
-    let score = 1;
-    let backtrack = function(I=0){
+    let ans = "";
+    let count = 0;
+    let backtrack = function(I=0,res=""){
+        if(count==k){return;}
         if(I==n){
-            if(score == k){
-                return true;
-            }
-            score++;
-            return false;
+            ans = res;
+            count++;
+            return;
         }
-
         for(let chr of "abc"){
-            if(I > 0 && arr[I-1] === chr){
-                continue;
+            if(I==0 || res[I-1]!=chr){
+                res += chr;
+                backtrack(I+1,res);
+                res = res.slice(0,res.length-1);
             }
-
-            arr[I] = chr;
-            if( backtrack(I+1) ){
-                return true;
-            }
-            arr[I] = '';
         }
-        return false;
     }
-
-    backtrack();
-    return arr.join("");
+    backtrack()
+    return count==k?ans:"";
 };
-
-//A,_,_,_,_
