@@ -3,6 +3,7 @@
  * @param {number[][]} target
  * @return {boolean}
  */
+
 var findRotation = function(mat, target) {
     let rotate = function(){
         for(let R = 0; R<mat.length; R++){
@@ -12,13 +13,11 @@ var findRotation = function(mat, target) {
         }
         mat.map( (row)=> row.reverse() );
     }
-
     for(let I = 0; I<4; I++){
-        rotate();
-        if(mat.toString() === target.toString()){
+        if(mat.toString() == target.toString()){
             return true;
         }
+        rotate(mat);
     }
-
     return false;
 };
