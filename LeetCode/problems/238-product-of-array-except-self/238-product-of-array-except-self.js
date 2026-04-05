@@ -1,18 +1,8 @@
-**
+/**
  * @param {number[]} nums
  * @return {number[]}
  */
 var productExceptSelf = function(nums) {
-    //1,2,3,4
-
-    //arr[I] = prefix[I-1] * postfix[I+1], multied one if undefined array result / outbounds
-
-    //Prefix, using multi
-    //1,2,6,24
-
-    //Postfix using multi
-    //24,24,12,4
-
     const SIZE = nums.length;
     let prefix = [nums[0]];
     let postfix = Array(SIZE).fill(1);
@@ -32,7 +22,5 @@ var productExceptSelf = function(nums) {
             nums[num] = prefix[num-1]*postfix[num+1];
         }
     }
-
     return nums;
-
 }
