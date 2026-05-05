@@ -11,34 +11,25 @@
  * @return {ListNode}
  */
 var rotateRight = function(head, k) {
-    if(!head){return head;}
-    if(!head.next){return head;}
+    if(!head || !head.next){return head;}
 
-    let length = 0;
-    let pointer = head;
-    while(pointer){
-        length++;
-        pointer = pointer.next;
+    let cnt = 1;
+    let last = head;
+    while(last.next){
+        last = last.next;
+        cnt++;
     }
 
-    k = k % length;
+    k = (cnt-(k%cnt))%cnt;
+    if(k==0){return head;}
     
-    let front = head;
-    let secondLast = head;
-    let last = head.next;
-
-    let I = 0
-    while(I<k){
-        while(last.next){
-            secondLast = secondLast.next;
-            last = last.next;
-        }
-        I++;
+    let start = head;
+    let curr = head;
+    for(let I = 0; I<k-1; I++){
+        curr = curr.next;
     }
-
-    last.next = front;
-    secondLast.next = null;
-    head = last;
-
-    return head;
+    let next = curr.next;
+    curr.next = null;
+    last.next = start;
+    return next;
 };
