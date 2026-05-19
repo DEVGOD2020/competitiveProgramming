@@ -4,13 +4,5 @@
  * @return {number}
  */
 var getCommon = function(nums1, nums2) {
-    let mySet = new Set(nums1);
-
-    for(let el of nums2){
-        if(mySet.has(el)){
-            return el;
-        }
-    }
-
-    return -1;
+    return nums1.find( (el)=> _.sortedIndexOf(nums2,el)>=0)??-1;
 };
