@@ -3,53 +3,23 @@
  * @param {number[]} arr2
  * @return {number}
  */
-
-class TrieNode {
-    constructor() {
-        this.children = {};
-        this.isEndOfWord = false;
-    }
-}
-
-class Trie {
-    constructor() {
-        this.root = new TrieNode();
-    }
-
-    insert(word) {
-        let node = this.root;
-        for (let char of word) {
-            if (!node.children[char]) {
-                node.children[char] = new TrieNode();
-            }
-            node = node.children[char];
-        }
-        node.isEndOfWord = true;
-    }
-
-    longestPrefix(prefix) {
-        let node = this.root;
-        let size = 0;
-        for (let char of prefix) {
-            if (!node.children[char]) {
-                return size;
-            }
-            size++;
-            node = node.children[char];
-        }
-        return size;
-    }
-}
-
 var longestCommonPrefix = function(arr1, arr2) {
-    let myTrie = new Trie();
-    for(let el of arr1){
-        myTrie.insert(""+el);
+    let mySet = new Set();
+    for(let num of arr1){
+        while(num>0){
+            mySet.add(num);
+            num = Math.floor(num/10);
+        }
     }
-
+    
     let max = 0;
-    for(let el of arr2){
-        max = Math.max(max, myTrie.longestPrefix(""+el));
+    for(let num of arr2){
+        while(num>0){
+            if(mySet.has(num)){
+                max = Math.max(max, Math.floor(Math.log10(num))+1);
+            }
+            num = Math.floor(num/10);
+        }
     }
 
     return max;
