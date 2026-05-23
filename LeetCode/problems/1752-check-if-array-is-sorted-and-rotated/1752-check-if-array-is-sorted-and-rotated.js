@@ -3,5 +3,5 @@
  * @return {boolean}
  */
 var check = function(nums) {
-    return [...nums,...nums].join(",").includes(_.sortBy(nums).join(","));
+    return nums.reduce((sum,el,I)=>sum+(nums.at(I-1)>el),0) <= 1;
 };
