@@ -2,6 +2,6 @@
  * @param {number[]} nums
  * @return {number}
  */
-var minElement = function (nums) {
-    return _.min(nums.map(el => _.sumBy(("" + el).split("").map(el => (+el)))))
+var minElement = function(nums) {
+    return Math.min(...nums.map((el)=>(""+el).split("").reduce((sum,el)=>sum+Number(el),0)));
 };

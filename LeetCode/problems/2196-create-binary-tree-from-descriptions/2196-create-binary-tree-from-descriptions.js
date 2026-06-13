@@ -12,35 +12,27 @@
  */
 var createBinaryTree = function(descriptions) {
     let myMap = new Map();
-    let childSet = new Set();  
-    for(let node of descriptions){
-
-        if(!myMap.has(node[0])){
-            myMap.set(node[0], new TreeNode(node[0]));
+    let childSet = new Set();
+    let rootSet = new Set();
+    for(let [parent,child,place] of descriptions){
+        if(!myMap.has(parent)){
+            myMap.set(parent, new TreeNode(parent));
         }
-        if(!myMap.has(node[1])){
-            myMap.set(node[1], new TreeNode(node[1]));
+        if(!myMap.has(child)){
+            myMap.set(child, new TreeNode(child));
         }
-
-        if(node[2] === 1){
-            let newTree = myMap.get(node[0]);
-            newTree.left = myMap.get(node[1]);
-            myMap.set(node[0], newTree);
+        if(place){
+            myMap.get(parent).left = myMap.get(child);
         }else{
-            let newTree = myMap.get(node[0]);
-            newTree.right = myMap.get(node[1]);
-            myMap.set(node[0], newTree);
+            myMap.get(parent).right = myMap.get(child);
         }
-
-        childSet.add(node[1]);
-    }
-
-    for(let node of myMap.keys()){
-        if(!childSet.has(node)){
-            return myMap.get(node);
+        if(!childSet.has(parent)){
+            rootSet.add(parent);
         }
+        if(rootSet.has(child)){
+            rootSet.delete(child);
+        }
+        childSet.add(child);
     }
-
-    return null;
-
+    return myMap.get(rootSet.values().next().value);
 };

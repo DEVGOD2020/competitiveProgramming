@@ -3,6 +3,8 @@
  * @param {number} pivot
  * @return {number[]}
  */
-var pivotArray = function (nums, pivot) {
-    return Object.values(Object.groupBy(nums, (el) => Math.sign(el - pivot) + 1)).flat();
-}
+var pivotArray = function(nums, pivot) {
+    return [...nums.filter((el)=>el<pivot)
+    ,...nums.filter((el)=>el==pivot),
+    ...nums.filter((el)=>el>pivot)];
+};
