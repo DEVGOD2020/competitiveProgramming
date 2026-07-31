@@ -3,11 +3,13 @@
  * @return {number}
  */
 var maxProduct = function(n) {
-    let arr = [];
+    let A = 0;
+    let B = 0;
     while(n>0){
-        arr.push(n%10);
+        let D = n%10;
+        if(B<=D){B=D}
+        if(A<=D){B=A; A=D}
         n = Math.floor(n/10);
     }
-    arr.sort( (a,b)=>b-a);
-    return (arr[0]*arr[1]);
+    return A*B;
 };

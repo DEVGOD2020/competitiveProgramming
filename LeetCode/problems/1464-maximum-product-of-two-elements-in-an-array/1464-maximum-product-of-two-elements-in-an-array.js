@@ -3,11 +3,11 @@
  * @return {number}
  */
 var maxProduct = function(nums) {
-    const numQ = new MaxPriorityQueue();
-    
-    for(a of nums){
-        numQ.enqueue(a);
+    let A = 0;
+    let B = 0;
+    for(let num of nums){
+        if(A<num-1){B=A; A=num-1;}
+        else if(B<num-1){B=num-1;}
     }
-
-    return (numQ.dequeue()['element']-1)*(numQ.front()['element']-1)
+    return A*B;
 };

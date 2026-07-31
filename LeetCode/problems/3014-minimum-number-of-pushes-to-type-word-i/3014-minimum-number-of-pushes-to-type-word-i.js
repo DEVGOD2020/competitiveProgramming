@@ -3,8 +3,8 @@
  * @return {number}
  */
 var minimumPushes = function(word) {
-    let score = 0;
-    let freqMap = _.orderBy(_.countBy(word), [], ['desc']);
-    _.forEach(freqMap, (value, key) => score += value*(Math.floor(key/8)+1));
-    return score;
+    if(word.length <= 8){return word.length;}
+    if(word.length <= 16){return 8 + (word.length-8)*2;}
+    if(word.length <= 24){return 8 + 16 + (word.length-16)*3;}
+    return 8 + 16 + 24 + (word.length-24)*4;
 };

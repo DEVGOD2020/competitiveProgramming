@@ -3,13 +3,19 @@
  * @return {number}
  */
 var maximumProduct = function(nums) {
-    nums = nums.sort((a,b)=> a - b);
-    return Math.max(
-        nums.slice(0,2).reduce(
-            (sum,el)=> sum*el, 1
-        )*nums[nums.length-1],
-        nums.slice(nums.length-3,nums.length).reduce(
-            (sum,el)=> sum*el, 1
-        )
-    )
+    let A = -Infinity;
+    let B = -Infinity;
+    let C = -Infinity;
+
+    let Y = Infinity;
+    let Z = Infinity;
+    for(let num of nums){
+        if(num >= A){C=B;B=A;A=num;}
+        else if(num >= B){C=B;B=num;}
+        else if(num >= C){C=num;}
+
+        if(num < Y){Z=Y; Y=num;}
+        else if(num < Z){Z=num;}
+    }
+    return Math.max(A*B*C, Y*Z*A);
 };
