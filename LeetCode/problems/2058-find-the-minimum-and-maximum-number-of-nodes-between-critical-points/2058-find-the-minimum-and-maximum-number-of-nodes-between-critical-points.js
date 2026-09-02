@@ -9,45 +9,32 @@
  * @param {ListNode} head
  * @return {number[]}
  */
-
-
-//minDistance = min of the current index - previous largest cricial point
-//maxDistance = largest cirtcal point - lowest critcal point
 var nodesBetweenCriticalPoints = function(head) {
-    if(head.next == null || head.next.next == null){
-        return [-1,-1];
-    }
-
-    let smolPoint = -1;
-    let beegPoint = -1;
-
-    let minDis = Infinity;
-
-    let pre = head;
-    let cur = head.next;
-    let next = head.next.next;
-
-    let I = 0;
-    while(next){
-        if(
-            (pre.val > cur.val && next.val > cur.val) || 
-            (pre.val < cur.val && next.val < cur.val)
+    let A = head;
+    let B = head?.next;
+    let C = head?.next?.next;
+    let ans = [Infinity,-1];
+    let start = -1;
+    let L = -1;
+    I = 0;
+    while(C){
+        if( 
+            (A.val > B.val && B.val < C.val) || 
+            (A.val < B.val && B.val > C.val)
         ){
-            smolPoint = smolPoint == -1 ? I : smolPoint;
-            if(beegPoint > -1){
-                minDis = Math.min(minDis,I-beegPoint);
+            if(start < 0){start = I; L = I;}
+            else{
+                ans[0] = Math.min(ans[0], I-L);
+                ans[1] = I-start;
+                L = I;
             }
-            beegPoint = Math.max(I,beegPoint);
-        }
 
-        pre = pre.next;
-        cur = cur.next;
-        next = next.next;
+        }
+        A = A.next;
+        B = B.next;
+        C = C.next;
         I++;
     }
-
-    if(smolPoint === -1 || beegPoint === -1 || minDis === Infinity){
-        return [-1,-1];
-    }
-    return [minDis, beegPoint-smolPoint];
+    if(ans[0] == Infinity){return [-1,-1];}
+    return ans;
 };
