@@ -4,17 +4,14 @@
  */
 var isValid = function(s) {
     let stack = [];
-    let oppsite = {"(":")","[":"]","{":"}"}
     for(let chr of s){
-        if("({[".includes(chr)){
-            stack.push(oppsite[chr]);
-        }
-        if(")}]".includes(chr)){
-            if(stack.pop() !== chr){
-                return false;
-            }
-        }
+        if(stack[stack.length-1] == "(" && chr == ")"){stack.pop();}
+        else if(stack[stack.length-1] == "{" && chr == "}"){stack.pop();}
+        else if(stack[stack.length-1] == "[" && chr == "]"){stack.pop();}
+        else{
+            if(stack.length == 0 && ")}]".includes(chr) ){return false;}
+            stack.push(chr);
+        } 
     }
-
-    return stack.length==0;
+    return stack.length == 0;
 };

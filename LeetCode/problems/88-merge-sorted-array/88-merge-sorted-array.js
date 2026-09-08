@@ -6,18 +6,9 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
-    let I = (m+n)-1;
-    let a = m-1;
-    let b = n-1;
-
-    while(b >= 0){
-        if(a >= 0 && nums1[a] > nums2[b]){
-            nums1[I] = nums1[a];
-            a--;
-        }else{
-            nums1[I] = nums2[b];
-            b--;
-        }
-        I--;
+    const SIZE = m+n;
+    for(let L = m-1, R = n-1, I=SIZE-1; I>=0; I--){
+        if( (nums1[L]??-Infinity) < nums2[R] ){nums1[I] = nums2[R]; R--; }
+        else{ nums1[I] = nums1[L]; L--;}
     }
 };
