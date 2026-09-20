@@ -1,8 +1,4 @@
-/**
- * @param {number} n
- * @return {number}
- */
-var totalNQueens = function(n) {
+function countQueenPlacements(n) {
     let ans = 0;
     let search = function(I,D1,D2){
         if(I == (1<<n)-1){
@@ -18,4 +14,4 @@ var totalNQueens = function(n) {
     }
     search(0,0,0);
     return ans;
-};
+}
