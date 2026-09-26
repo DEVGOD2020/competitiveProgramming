@@ -1,9 +1,4 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
-
-var checkValidString = function(s) {
+function canBalanceWildcards(s) {
     let A = 0;
     let B = 0;
     for(let chr of s){
@@ -14,4 +9,4 @@ var checkValidString = function(s) {
         if(A<0){A=0;}
     }
     return A == 0;
-};
+}
