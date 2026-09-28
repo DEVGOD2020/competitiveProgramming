@@ -3,18 +3,12 @@
  * @return {number}
  */
 var maxDepth = function(s) {
-    let stack = [];
-    let max = 0;
-    for(c of s){
-        if(c==='('){
-            stack.push(c);
-        }
-        if(c===')'){
-            stack.pop();
-        }
-        if(stack.length > max){
-            max = stack.length;
-        }
+    let score = 0;
+    let ans = 0;
+    for(let chr of s){
+        if(chr=="("){score++;}
+        if(chr==")"){score--;}
+        ans = Math.max(score,ans);
     }
-    return max;
+    return ans;
 };
