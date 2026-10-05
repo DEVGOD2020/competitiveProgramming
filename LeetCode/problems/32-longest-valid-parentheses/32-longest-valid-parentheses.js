@@ -3,11 +3,6 @@
  * @return {number}
  */
 var longestValidParentheses = function(s) {
-    
-    if(s.length < 2){
-        return "";
-    }
-
     let stack = [-1];
     let max = 0;
     for(let I = 0; I<s.length; I++){

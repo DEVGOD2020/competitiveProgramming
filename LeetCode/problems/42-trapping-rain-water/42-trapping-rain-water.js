@@ -3,35 +3,21 @@
  * @return {number}
  */
 var trap = function(height) {
+    let DP = Array.from(
+        {length:height.length},()=>new Array(2).fill(0)
+    );
 
-    let newArr = [];
-    let monoStack = [];
-    let max = 0;
-    for(let I=height.length-1; I>=0; I--){
-        if(height[I] > max){max = height[I];}
-        while(monoStack.length && max > monoStack[0]){
-            monoStack.shift();
-        }
-        newArr[I] = monoStack[0] ? monoStack[0] : -1;
-        monoStack.unshift( max );
+    for(let L = 0; L<height.length; L++){
+        DP[L][0] = Math.max(height[L-1]??0,DP[L-1]?.[0]??0);
+    }
+    for(let R = height.length-1; R>=0; R--){
+        DP[R][1] = Math.max(height[R+1]??0,DP[R+1]?.[1]??0);
     }
 
-    let waterLevel = 0;
-
-    monoStack = [];
-    max = 0;
-    for(let I=0; I<height.length; I++){
-        if(height[I] > max){max = height[I];}
-        while(monoStack.length && max > monoStack[0]){
-            monoStack.shift();
-        }
-        let val = monoStack[0] ? monoStack[0] : -1;
-        if(newArr[I] > 0 && val > 0){
-            waterLevel += Math.min(newArr[I],val)-height[I];
-        }
-        monoStack.unshift( max );
+    let score = 0;
+    for(let I = 0; I<height.length; I++){
+        score += Math.max(0, Math.min(DP[I][0],DP[I][1])-height[I] );
     }
 
-    return waterLevel;
-    
+    return score;
 };
