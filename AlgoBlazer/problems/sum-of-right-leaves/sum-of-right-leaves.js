@@ -1,13 +1,7 @@
-function rightLeavesSum(root) {
-    let score = 0;
-    let trav = function(root,isRight=false){
-        if(!root){return 0;}
-        if(!root.left && !root.right && isRight){
-            score += root.val;
-        }
-        trav(root.right,true);
-        trav(root.left,false);
+function rightLeavesSum(root,isRight=false) {
+    if(!root){return 0;}
+    if(!root.left && !root.right){
+        return isRight?root.val:0;
     }
-    trav(root);
-    return score;
+    return rightLeavesSum(root.left,false) + rightLeavesSum(root.right,true);
 }

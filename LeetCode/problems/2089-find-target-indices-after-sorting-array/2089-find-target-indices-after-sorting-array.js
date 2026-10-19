@@ -4,9 +4,11 @@
  * @return {number[]}
  */
 var targetIndices = function(nums, target) {
-    nums.sort( (a,b)=>a-b);
-    if((a = nums.indexOf(target)) == -1){
-        return [];
+    let A = 0;
+    let B = 0;
+    for(let num of nums){
+        if(num<target){A++;}
+        if(num==target){B++;}
     }
-    return _.range( a, nums.lastIndexOf(target)+1);
+    return _.range(A,A+B);
 };
